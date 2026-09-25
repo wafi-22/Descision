@@ -220,6 +220,10 @@ app.get('/api/metrics', (req, res) => {
   });
 });
 
-app.listen(PORT, () => {
-  console.log(`[DecisionMind AI Server] Running on http://localhost:${PORT}`);
-});
+if (!process.env.VERCEL) {
+  app.listen(PORT, () => {
+    console.log(`[DecisionMind AI Server] Running on http://localhost:${PORT}`);
+  });
+}
+
+export default app;
